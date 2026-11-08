@@ -45,7 +45,7 @@ export default function App() {
               ? PLAY_ROUTE_PATH
               : window.location.pathname
         }
-        className="min-h-screen bg-slate-50 text-slate-950"
+        className="min-h-screen bg-slate-950 text-slate-100"
       >
         <PlayPage />
       </div>
