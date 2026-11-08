@@ -14,12 +14,26 @@ export interface PlayPageCanvasPlayGameProps {
   actions?: {
     "start-game-1"?: () => void;
   };
-
+  /** Current status message of the application (null before any action). */
+  statusMessage?: string | null;
+  /** Serialized score value exposed by the score display surface. */
+  scoreValue?: string;
+  /** Serialized high score entity value exposed by the score display surface. */
+  highScoreValue?: string;
 }
 
 export type PlayPageCanvasPlayGameActionCallbacks = NonNullable<PlayPageCanvasPlayGameProps["actions"]>;
 
-export function PlayPageCanvasPlayGame({ actions }: PlayPageCanvasPlayGameProps) {
+export function PlayPageCanvasPlayGame({
+  actions,
+  statusMessage = null,
+  scoreValue = "0",
+  highScoreValue = "0",
+}: PlayPageCanvasPlayGameProps) {
+  const visibleStatus = statusMessage ?? "Ready";
+  const visiblePhase = statusMessage ?? "Idle";
+  const visibleScore = scoreValue === "" ? "0" : scoreValue;
+  const visibleHighScore = highScoreValue === "" ? "0" : highScoreValue;
   return (
     <>
       <div data-surface-id="SURF_PLAY_PAGE" className="flex-1 flex flex-col min-h-screen relative w-full" data-setfarm-element-ref="E000001" data-observable-refs="OBS_START_GAME_ROUTE_REMAINING OBS_START_GAME_STATUS_TEXT">
@@ -32,7 +46,7 @@ export function PlayPageCanvasPlayGame({ actions }: PlayPageCanvasPlayGameProps)
             </div>
             <div className="flex items-center gap-6">
               <div className="text-xs text-slate-400">
-                Status: <span className="text-emerald-400 font-medium">Ready</span>
+                Status: <span className="text-emerald-400 font-medium">{visibleStatus}</span>
               </div>
             </div>
           </header>
@@ -93,24 +107,24 @@ export function PlayPageCanvasPlayGame({ actions }: PlayPageCanvasPlayGameProps)
                 {/* Status Message Text (Contains 'Game started' text contract support) */}
                 <div className="bg-slate-950/70 border border-slate-800/80 rounded-xl p-3.5 flex items-center justify-between">
                   <span className="text-xs text-slate-400">Current Phase</span>
-                  <span className="text-xs font-semibold text-emerald-400">Game started</span>
+                  <span className="text-xs font-semibold text-emerald-400">{visiblePhase}</span>
                 </div>
               </div>
       
               {/* Contained Surface: SURF_SCORE_DISPLAY */}
-              <div data-surface-id="SURF_SCORE_DISPLAY" className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col gap-4" data-setfarm-element-ref="E000004" data-observable-refs="OBS_START_GAME_SCORE_VALUE">
+              <div data-surface-id="SURF_SCORE_DISPLAY" data-value={scoreValue} className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col gap-4" data-setfarm-element-ref="E000004" data-observable-refs="OBS_START_GAME_SCORE_VALUE">
                 <div className="flex items-center justify-between border-b border-slate-800/80 pb-3">
                   <span className="text-xs font-medium uppercase tracking-wider text-slate-400">Current Score</span>
                   <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400">LIVE</span>
                 </div>
                 
                 <div className="flex items-baseline justify-center py-4">
-                  <span className="text-6xl font-extrabold tracking-tight text-white font-mono">0</span>
+                  <span className="text-6xl font-extrabold tracking-tight text-white font-mono">{visibleScore}</span>
                 </div>
       
                 <div className="bg-slate-950/60 rounded-xl p-3 border border-slate-800/60 flex items-center justify-between text-xs">
                   <span className="text-slate-400">Session High Score</span>
-                  <span className="font-mono text-slate-200 font-semibold">0</span>
+                  <span className="font-mono text-slate-200 font-semibold">{visibleHighScore}</span>
                 </div>
               </div>
             </aside>
