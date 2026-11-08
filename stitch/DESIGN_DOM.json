@@ -1,0 +1,120 @@
+{
+  "generatedAt": "2026-11-08T02:22:46.098Z",
+  "screenCount": 1,
+  "screens": {
+    "2efcd6b4ece145b0a1b773cd46a3d487": {
+      "screenId": "2efcd6b4ece145b0a1b773cd46a3d487",
+      "materialSymbolsRequired": false,
+      "sections": [
+        {
+          "tag": "header",
+          "layout": "flex-row",
+          "classes": [
+            "w-full",
+            "border-b",
+            "border-slate-800",
+            "bg-slate-900/80",
+            "px-8",
+            "py-4",
+            "flex",
+            "items-center",
+            "justify-between"
+          ],
+          "childCount": 4
+        },
+        {
+          "tag": "main",
+          "layout": "flex-col",
+          "classes": [
+            "flex-1",
+            "max-w-7xl",
+            "w-full",
+            "mx-auto",
+            "p-8",
+            "flex",
+            "flex-col",
+            "lg:flex-row",
+            "gap-8",
+            "items-start"
+          ],
+          "childCount": 20
+        },
+        {
+          "tag": "footer",
+          "layout": "flex-row",
+          "classes": [
+            "w-full",
+            "border-t",
+            "border-slate-900",
+            "bg-slate-950",
+            "px-8",
+            "py-4",
+            "text-xs",
+            "text-slate-500",
+            "flex",
+            "items-center"
+          ],
+          "childCount": 0
+        }
+      ],
+      "buttons": [
+        {
+          "kind": "button",
+          "label": "Start Game",
+          "classes": [
+            "w-full",
+            "py-3.5",
+            "px-6",
+            "rounded-xl",
+            "bg-emerald-500",
+            "hover:bg-emerald-400",
+            "active:bg-emerald-600",
+            "text-slate-950",
+            "font-bold",
+            "text-sm",
+            "tracking-wide",
+            "shadow-lg",
+            "shadow-emerald-500/20",
+            "transition-all",
+            "flex",
+            "items-center",
+            "justify-center",
+            "gap-2",
+            "cursor-pointer",
+            "focus:outline-none",
+            "focus:ring-2",
+            "focus:ring-emerald-400",
+            "focus:ring-offset-2",
+            "focus:ring-offset-slate-900"
+          ],
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        }
+      ],
+      "inputs": [],
+      "navLinks": [],
+      "cards": [],
+      "icons": [],
+      "images": [],
+      "cssVars": {},
+      "colorPalette": {},
+      "fonts": [],
+      "layoutHints": {
+        "flexDirection": "col",
+        "gap": "3"
+      },
+      "behaviorContract": [
+        {
+          "kind": "button",
+          "label": "Start Game",
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        }
+      ],
+      "tabBar": [],
+      "title": "Play Page - Canvas Play Game"
+    }
+  }
+}
